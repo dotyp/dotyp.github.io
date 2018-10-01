@@ -17,29 +17,21 @@ div.home(
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-import {SiteInfo} from '../site.d.ts'
+import {SiteInfo} from '../site'
 @Component({
   components: {
     HelloWorld,
   },
   watch: {
     searchText(val){
-      this.cursor = 0
       this.$store.dispatch('selectSites', val)
-    },
-    cursor(val){
-      if(val < 0){
-        this.cursor = 0
-      }else if(val >= this.currentList().length){
-        this.cursor = this.currentList().length-1
-      }
     }
   }
 })
 export default class Home extends Vue {
   org = 'dotyp'
   searchText: string = ""
-  cursor = 0
+  cursor: number = 0
   created(){
     this.$store.dispatch('loadSites', this.org)
   }
