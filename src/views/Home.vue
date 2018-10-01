@@ -31,7 +31,8 @@ export default class Home extends Vue {
     if(this.$store.state.selectedSites.length == 1){
       let [org, repo] = this.$store.state.selectedSites[0].full_name.split("/")
       let url = `https://${org}.github.io/${repo}`
-      window.open(url, '_blank').focus()
+      let win = window.open(url, '_blank')
+      if(win) win.focus()
     }
   }
 }
