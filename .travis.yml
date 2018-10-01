@@ -10,7 +10,7 @@ install:
   - yarn global add @vue/cli
   - yarn install
   - yarn build
-script: yarn test:unit
+script: true
 deploy:
   provider: pages
   local-dir: ./dist
